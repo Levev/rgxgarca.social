@@ -21,7 +21,7 @@
         class="top-0 flex flex-col items-center justify-center w-full rounded-2xl backdrop-blur-2xl border md:border-2 border-white/10 transition-all ease-in-out tuff-spotify-transition"
         :class="{
             'h-(--popup-h) translate-y-[-20%] px-4 pb-20 showModal -mb-40 z-10': showModal,
-            'md:h-20 h-16': !showModal}"
+            'md:h-20 h-16 hover:scale-105 hover:bg-white/20': !showModal}"
         @mouseenter="rerenderSpotify++"
         @click="showModal = true"
         ref="sModal"
@@ -33,18 +33,21 @@
                 'opacity-10': !showModal
             }"
         />
-        <div class="absolute top-3 w-full flex flex-col items-center justify-center">
+        <div class="absolute top-3 md:top-[50%] md:translate-y-[-50%] w-full flex flex-col items-center justify-center">
             <Icon :icon="props.icon" :key="rerenderSpotify" class="size-16 md:size-20 max-w-max drop-shadow-md/40 p-2 absolute left-0" :class="{'hidden': showModal}"/>
             <h1 class="text-sm md:text-lg font-semibold text-shadow-lg select-none">{{ props.title }}</h1>
             <h3 class="text-xs md:text-md font-normal text-white/60 text-shadow-lg select-none">{{ props.desc }}</h3>
         </div>
         <slot v-if="showModal" :class="{'hidden': !showModal}"></slot>
         <div class="absolute bottom-3 w-full flex flex-row items-center justify-between px-4" :class="{'hidden': !showModal}">
-            <a :href="props.link" target="_blank" rel="noopener noreferrer" class="p-4 md:p-2 bg-neutral-900/80 rounded-full flex flex-row items-center md:gap-2 bright-hover-tuff">
+            <a :href="props.link" target="_blank" rel="noopener noreferrer" class="p-4 md:p-2 bg-neutral-900/80 rounded-full flex flex-row items-center md:gap-2 tuff-btn-hover hover:scale-[1.02]">
                 <Icon :icon="props.icon" class="size-6 md:size-10 max-w-max drop-shadow-md/40 bright-hover-tuff"/>
                 <h4 class="text-sm font-medium md:text-md md:font-semibold">{{ props.linkText }}</h4>
             </a>
-            <Icon icon="tabler:copy" class="size-14 p-3 bg-neutral-900/80 rounded-full bright-hover-tuff cursor-pointer"/>
+            <div class="flex flex-row gap-2 *:hover:scale-105" ref="copyBtn">
+                <Icon @click="copied()" :icon="copyCounter % 2 == 0? 'tabler:copy' : 'line-md:confirm-circle'" :key="copyCounter" class="size-14 p-3 bg-neutral-900/80 rounded-full tuff-btn-hover cursor-pointer duration-400"/>
+                <Icon @click.stop="showModal = false" icon="mingcute:close-fill" class="size-14 p-3 bg-neutral-900/80 rounded-full tuff-btn-hover cursor-pointer"/>
+            </div>
         </div>
     </div>
 </template>
@@ -63,8 +66,29 @@ const props = defineProps<{
 }>();
 
 const rerenderSpotify = ref(0);
+const copyCounter = ref(0);
+const copyClass = ref("white");
 const spotifyModal = useTemplateRef("sModal");
 const showModal = ref(false);
 
+const copied = () => {
+    if(copyCounter.value % 2 !== 0) return;
+
+    navigator.clipboard.writeText(props.link);
+    copyCounter.value++;
+
+    setTimeout(() => {
+        copyCounter.value++;
+    }, 1200);
+}
+
 onClickOutside(spotifyModal, _ => showModal.value = false);
 </script>
+
+<style scoped>
+@reference "tailwindcss";
+
+.tuff-btn-hover {
+    @apply transition-[filter,scale,color] duration-200 ease-in hover:brightness-125;
+}
+</style>
