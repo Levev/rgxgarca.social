@@ -67,7 +67,6 @@ const props = defineProps<{
 
 const rerenderSpotify = ref(0);
 const copyCounter = ref(0);
-const copyClass = ref("white");
 const spotifyModal = useTemplateRef("sModal");
 const showModal = ref(false);
 
