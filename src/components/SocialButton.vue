@@ -51,7 +51,7 @@
 
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-import { ref, useTemplateRef, type Ref } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 const props = defineProps<{
