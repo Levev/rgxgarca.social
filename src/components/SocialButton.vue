@@ -18,10 +18,10 @@
 
 <template>
     <div 
-        class="top-0 flex flex-col items-center justify-center w-full rounded-2xl backdrop-blur-2xl border-2 border-white/10 transition-all ease-in-out tuff-spotify-transition"
+        class="top-0 flex flex-col items-center justify-center w-full rounded-2xl backdrop-blur-2xl border md:border-2 border-white/10 transition-all ease-in-out tuff-spotify-transition"
         :class="{
-            'h-(--popup-h) translate-y-[-20%] px-4 pb-20 showModal -mb-40': showModal,
-            'h-20': !showModal}"
+            'h-(--popup-h) translate-y-[-20%] px-4 pb-20 showModal -mb-40 z-10': showModal,
+            'md:h-20 h-16': !showModal}"
         @mouseenter="rerenderSpotify++"
         @click="showModal = true"
         ref="sModal"
@@ -34,15 +34,15 @@
             }"
         />
         <div class="absolute top-3 w-full flex flex-col items-center justify-center">
-            <Icon :icon="props.icon" :key="rerenderSpotify" class="size-20 max-w-max drop-shadow-md/40 p-2 absolute left-0" :class="{'hidden': showModal}"/>
-            <h1 class="text-lg font-semibold text-shadow-lg select-none">{{ props.title }}</h1>
-            <h3 class="text-md font-normal text-white/60 text-shadow-lg select-none">{{ props.desc }}</h3>
+            <Icon :icon="props.icon" :key="rerenderSpotify" class="size-16 md:size-20 max-w-max drop-shadow-md/40 p-2 absolute left-0" :class="{'hidden': showModal}"/>
+            <h1 class="text-sm md:text-lg font-semibold text-shadow-lg select-none">{{ props.title }}</h1>
+            <h3 class="text-xs md:text-md font-normal text-white/60 text-shadow-lg select-none">{{ props.desc }}</h3>
         </div>
         <slot v-if="showModal" :class="{'hidden': !showModal}"></slot>
         <div class="absolute bottom-3 w-full flex flex-row items-center justify-between px-4" :class="{'hidden': !showModal}">
-            <a :href="props.link" target="_blank" rel="noopener noreferrer" class="p-2 bg-neutral-900/80 rounded-full flex flex-row items-center gap-2 bright-hover-tuff">
-                <Icon :icon="props.icon" class="size-10 max-w-max drop-shadow-md/40 bright-hover-tuff"/>
-                <h4>{{ props.linkText }}</h4>
+            <a :href="props.link" target="_blank" rel="noopener noreferrer" class="p-4 md:p-2 bg-neutral-900/80 rounded-full flex flex-row items-center md:gap-2 bright-hover-tuff">
+                <Icon :icon="props.icon" class="size-6 md:size-10 max-w-max drop-shadow-md/40 bright-hover-tuff"/>
+                <h4 class="text-sm font-medium md:text-md md:font-semibold">{{ props.linkText }}</h4>
             </a>
             <Icon icon="tabler:copy" class="size-14 p-3 bg-neutral-900/80 rounded-full bright-hover-tuff cursor-pointer"/>
         </div>
