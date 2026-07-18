@@ -53,7 +53,7 @@ import SocialButton from './components/SocialButton.vue';
     --panel-w: 40rem;
     --popup-h: 50rem;
     --cover: url("/album_stylized.png");
-    --rgxgarca: url("rgxgarca.jpg");
+    --rgxgarca: url("/rgxgarca.jpg");
 }
 
 svg {
