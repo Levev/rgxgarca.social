@@ -17,7 +17,7 @@
 -->
 
 <template>
-    <main class="overflow-hidden w-screen h-screen bg-(image:--cover) bg-tuff md:py-10">
+    <main class="overflow-hidden w-screen h-dvh bg-(image:--cover) bg-tuff md:py-10">
         <div class="w-full md:w-(--panel-w) h-full relative m-auto flex flex-col md:gap-3 items-center overflow-hidden p-4 md:p-12 md:rounded-4xl bg-neutral-900/10 backdrop-blur-lg md:border-2 border-white/10 shadow-2xl/60 text-white">
             <div class="rounded-full size-24 mt-8 md:size-32 md:mt-12 bg-(image:--rgxgarca) bg-tuff shadow-lg outline-2 outline-slate-900/10 "></div>
             <h1 class="mt-2 text-2xl font-semibold md:text-4xl md:font-bold text-shadow-lg">rg x garca</h1>
@@ -38,7 +38,7 @@
             <SocialButton icon="line-md:tiktok" title="rg x garca · TikTok" desc="Vége az I-skolanak" link="https://www.tiktok.com/@rg_x_garca" class="mt-3" />
 
             <a href="https://hinokodo.itch.io/human-made?download" target="_blank" class="my-auto drop-shadow-2xl/90">
-                <img src="/humanmade.svg" alt="Human made - no AI used" class="size-52 drop-shadow-2xl/90 brightness-50"/>
+                <img src="/humanmade.svg" alt="Human made - no AI used" class="size-26 md:size-52 drop-shadow-2xl/90 brightness-50"/>
             </a>
         </div>
     </main>
