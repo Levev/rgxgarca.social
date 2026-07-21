@@ -24,7 +24,9 @@
             <h3 class="text-lg font-medium md:text-2xl md:font-semibold text-shadow-lg text-white/60">legjobb zene(k)</h3>
 
             <Icon icon="lucide:share" @click="share()" class="absolute top-3 right-3 md:top-6 md:right-6 size-14 p-3 md:size-18 md:p-4 overflow-visible backdrop-blur-lg backdrop-contrast-200 border-2 bg-neutral-900/10 border-white/10 drop-shadow-md/40 select-none rounded-full tuff-btn-hover hover:scale-110"/>
-            <Icon icon="line-md:github" class="absolute top-3 left-3 md:top-6 md:left-6 size-14 p-3 md:size-18 md:p-4 overflow-visible backdrop-blur-lg backdrop-contrast-200 border-2 bg-neutral-900/10 border-white/10 drop-shadow-md/40 select-none rounded-full tuff-btn-hover hover:scale-110"/>
+            <a href="https://github.com/Levev/rgxgarca.social" target="_blank">
+                <Icon icon="line-md:github" class="absolute top-3 left-3 md:top-6 md:left-6 size-14 p-3 md:size-18 md:p-4 overflow-visible backdrop-blur-lg backdrop-contrast-200 border-2 bg-neutral-900/10 border-white/10 drop-shadow-md/40 select-none rounded-full tuff-btn-hover hover:scale-110"/>
+            </a>
 
             <SocialButton icon="line-md:spotify" title="rg x garca · Spotify" desc="Vége az I-skolanak" link-text="Nyissuk meg öcsipók" link="https://open.spotify.com/artist/51aizcUAA7QuxTN9KBQcT1" class="mt-12">
                 <iframe src="https://open.spotify.com/embed/artist/51aizcUAA7QuxTN9KBQcT1" title="tufftuff music embed" allow="encrypted-media"></iframe>
@@ -34,6 +36,10 @@
             </SocialButton>
             <SocialButton icon="line-md:instagram" title="rg x garca · Instagram" desc="Vége az I-skolanak" link="https://www.instagram.com/rg_x_garca/" class="mt-3" />
             <SocialButton icon="line-md:tiktok" title="rg x garca · TikTok" desc="Vége az I-skolanak" link="https://www.tiktok.com/@rg_x_garca" class="mt-3" />
+
+            <a href="https://hinokodo.itch.io/human-made?download" target="_blank" class="my-auto drop-shadow-2xl/90">
+                <img src="/humanmade.svg" alt="Human made - no AI used" class="size-52 drop-shadow-2xl/90 brightness-50"/>
+            </a>
         </div>
     </main>
 </template>
@@ -52,7 +58,7 @@ const share = () => navigator.share({
 
 @reference "tailwindcss";
 .bg-tuff {
-    @apply bg-center bg-contain;
+    @apply bg-center bg-cover;
 }
 
 .tuff-btn-hover {
