@@ -1,5 +1,6 @@
 FROM oven/bun:latest AS build
-WORKDIR /app
+WORKDIR /
+COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 RUN bun run build
 
