@@ -42,13 +42,13 @@
         </div>
         <slot v-if="showModal" :class="{'hidden': !showModal}"></slot>
         <div class="absolute bottom-4 md:bottom-2 w-full flex flex-row items-center justify-between px-4" :class="{'hidden': !showModal}">
-            <a :href="props.link" target="_blank" rel="noopener noreferrer" class="p-3 bg-neutral-900/80 rounded-full flex flex-row items-center md:gap-2 tuff-btn-hover hover:scale-[1.02]">
+            <a :href="props.link" target="_blank" rel="noopener noreferrer" class="p-3 bg-neutral-900/80 border md:border-2 border-white/10 rounded-full flex flex-row items-center md:gap-2 tuff-btn-hover hover:scale-[1.02]">
                 <Icon :icon="props.icon" class="size-6 md:size-10 max-w-max drop-shadow-md/40 bright-hover-tuff"/>
                 <h4 class="text-xs font-medium md:text-md md:font-semibold">{{ props.linkText }}</h4>
             </a>
             <div class="flex flex-row gap-2 *:hover:scale-105" ref="copyBtn">
-                <Icon @click="copied()" :icon="copyCounter % 2 == 0? 'tabler:copy' : 'line-md:confirm-circle'" :key="copyCounter" class="size-12 md:size-14 p-3 overflow-visible bg-neutral-900/80 rounded-full tuff-btn-hover cursor-pointer duration-400"/>
-                <Icon @click.stop="showModal = false" icon="mingcute:close-fill" class="size-12 md:size-14 p-3 bg-neutral-900/80 rounded-full tuff-btn-hover cursor-pointer"/>
+                <Icon @click="copied()" :icon="copyCounter % 2 == 0? 'tabler:copy' : 'line-md:confirm-circle'" :key="copyCounter" class="size-12 md:size-14 p-3 overflow-visible bg-neutral-900/80 border md:border-2 border-white/10 rounded-full tuff-btn-hover cursor-pointer duration-400" :class="{'copy-anim': copyCounter % 2 == 1}"/>
+                <Icon @click.stop="showModal = false" icon="mingcute:close-fill" class="size-12 md:size-14 p-3 bg-neutral-900/80 border md:border-2 border-white/10 rounded-full tuff-btn-hover cursor-pointer"/>
             </div>
         </div>
     </div>
@@ -88,8 +88,18 @@ const navigateLink = () => window.location.href = props.link;
 onClickOutside(spotifyModal, _ => showModal.value = false);
 </script>
 
-<style>
+<style scoped>
 @reference "tailwindcss";
 
 
+.copy-anim {
+    animation: copy 1200ms ease-in-out;
+}
+
+@keyframes copy {
+    80%, to {
+        background-color: color-mix(in oklab, oklch(62.7% 0.194 149.214) 80%, transparent);
+        border-color: color-mix(in oklab, var(--color-slate-900) /* oklch(20.8% 0.042 265.755) = #0f172b */ 40%, transparent);
+    }
+}
 </style>
