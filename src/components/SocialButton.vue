@@ -22,7 +22,7 @@
         :class="{
             'h-(--popup-h) translate-y-[-20%] px-4 pb-20 showModal -mb-40 z-10': showModal,
             'md:h-20 h-16 hover:scale-105 hover:bg-white/20': !showModal}"
-        @mouseenter="rerenderSpotify++"
+        @mouseenter="rerenderIcon++"
         @click="$slots.default ? showModal = true : navigateLink()"
         ref="sModal"
     >
@@ -36,13 +36,13 @@
         <div 
             class="absolute top-3 w-full flex flex-col items-center justify-center"
             :class="{'md:top-[50%] md:translate-y-[-50%]': !showModal, 'md:top-4': showModal}">
-            <Icon :icon="props.icon" :key="rerenderSpotify" class="size-16 md:size-20 max-w-max drop-shadow-md/40 p-2 absolute left-0" :class="{'hidden': showModal}"/>
+            <Icon :icon="props.icon" :key="rerenderIcon" class="size-16 md:size-20 max-w-max drop-shadow-md/40 p-2 absolute left-0" :class="{'hidden': showModal}"/>
             <h1 class="text-sm md:text-lg font-semibold text-shadow-lg select-none">{{ props.title }}</h1>
             <h3 class="text-xs md:text-md font-normal text-white/60 text-shadow-lg select-none">{{ props.desc }}</h3>
         </div>
         <slot v-if="showModal" :class="{'hidden': !showModal}"></slot>
         <div class="absolute bottom-4 md:bottom-2 w-full flex flex-row items-center justify-between px-4" :class="{'hidden': !showModal}">
-            <a :href="props.link" target="_blank" rel="noopener noreferrer" class="p-3 bg-neutral-900/80 border md:border-2 border-white/10 rounded-full flex flex-row items-center md:gap-2 tuff-btn-hover hover:scale-[1.02]">
+            <a :href="props.link" :data-umami-event="`${props.icon.split(':')[1]}-visit`" target="_blank" rel="noopener noreferrer" class="p-3 bg-neutral-900/80 border md:border-2 border-white/10 rounded-full flex flex-row items-center md:gap-2 tuff-btn-hover hover:scale-[1.02]">
                 <Icon :icon="props.icon" class="size-6 md:size-10 max-w-max drop-shadow-md/40 bright-hover-tuff"/>
                 <h4 class="text-xs font-medium md:text-md md:font-semibold">{{ props.linkText }}</h4>
             </a>
@@ -67,7 +67,7 @@ const props = defineProps<{
     link: string;
 }>();
 
-const rerenderSpotify = ref(0);
+const rerenderIcon = ref(0);
 const copyCounter = ref(0);
 const spotifyModal = useTemplateRef("sModal");
 const showModal = ref(false);
