@@ -73,6 +73,6 @@ const share = () => navigator.share({
 }
 
 iframe {
-    @apply size-full mt-20;
+    @apply size-full mt-20 min-h-[360px];
 }
 </style>
