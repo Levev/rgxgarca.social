@@ -17,17 +17,17 @@
 -->
 
 <template>
-    <main class="overflow-hidden w-screen h-dvh bg-(image:--cover) bg-tuff md:py-10">
-        <router-view v-slot="{ Component }">
-            <Transition mode="out-in" name="panel" tag="div" class="transform">
-                <component :is="Component" />
-            </Transition>
-        </router-view>
+    <main class="overflow-hidden w-screen h-dvh flex flex-col items-center justify-center bg-(image:--cover) bg-tuff md:py-10">
+        <div class="transform-3d perspective-[3000px] w-fit hover:rotate-y-180 transition-all duration-1000 scale-75">
+            <LandingPage class="translate-z-48"/>
+            <About class="-translate-z-48 rotate-y-180 -translate-y-full"/>
+        </div>
     </main>
 </template>
 
 <script setup lang="ts">
-
+import LandingPage from './views/LandingPage.vue';
+import About from './views/About.vue';
 </script>
 
 <style>
@@ -48,20 +48,13 @@
     --rgxgarca: url("/rgxgarca.jpg");
 }
 
-.panel-enter-active {
-    perspective: 2000px;
-    transform-style: preserve-3d;
-    transition: all 0.4s ease;
-}
-.panel-leave-active {
-    perspective: 1200px;
-    transform-style: preserve-3d;
-    transition: all 0.4s ease;
+.panel-enter-active, .panel-leave-active {
+    transition: all 4s ease;
 }
 .panel-enter-from {
     transform: rotateY(-180deg) translateZ(-600px);
 }
 .panel-leave-to {
-  transform: rotateY(180deg) translateZ(600px); 
+  transform: rotateY(180deg) translateZ(-600px); 
 }
 </style>

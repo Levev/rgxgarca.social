@@ -18,7 +18,7 @@
 
 <template>
     <div 
-        class="top-0 flex flex-col items-center justify-center w-full rounded-2xl backdrop-blur-2xl border md:border-2 border-white/10 transition-all ease-in-out tuff-spotify-transition"
+        class="flex flex-col items-center justify-center w-full rounded-2xl backdrop-blur-2xl border md:border-2 border-white/10 transition-all ease-in-out"
         :class="{
             'h-(--popup-h) translate-y-[-20%] px-4 pb-20 showModal -mb-40 z-10': showModal,
             'md:h-20 h-16 hover:scale-105 hover:bg-white/20': !showModal}"
@@ -90,7 +90,6 @@ onClickOutside(spotifyModal, _ => showModal.value = false);
 
 <style scoped>
 @reference "tailwindcss";
-
 
 .copy-anim {
     animation: copy 1200ms ease-in-out;
