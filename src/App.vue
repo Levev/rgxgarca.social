@@ -48,20 +48,14 @@
     --rgxgarca: url("/rgxgarca.jpg");
 }
 
-.panel-enter-active {
-    perspective: 2000px;
-    transform-style: preserve-3d;
-    transition: all 0.4s ease;
-}
+.panel-enter-active,
 .panel-leave-active {
     perspective: 1200px;
     transform-style: preserve-3d;
-    transition: all 0.4s ease;
+    transition: all 0.2s ease;
 }
-.panel-enter-from {
-    transform: rotateY(-180deg) translateZ(-600px);
-}
+.panel-enter-from,
 .panel-leave-to {
-  transform: rotateY(180deg) translateZ(600px); 
+  transform: rotateY(90deg); 
 }
 </style>

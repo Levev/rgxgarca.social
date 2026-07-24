@@ -1,4 +1,4 @@
-import { createMemoryHistory, createRouter, type RouteRecordRaw } from "vue-router";
+import { createWebHistory, createRouter, type RouteRecordRaw } from "vue-router";
 
 import LandingPage from "./views/LandingPage.vue";
 import About from "./views/About.vue";
@@ -9,6 +9,6 @@ const routes: RouteRecordRaw[] = [
 ]
 
 export const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes
 });
